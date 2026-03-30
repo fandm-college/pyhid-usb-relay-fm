@@ -6,7 +6,7 @@ import array
 import os
 import usb.core
 import usb.util
-import xdg
+from xdg_base_dirs import xdg_config_home
 import yaml
 
 USB_TYPE_CLASS = 0x20
@@ -41,7 +41,7 @@ class Controller(object):
 
         try:
             with open(
-                os.path.join(xdg.XDG_CONFIG_HOME, "usb-hid-relay", "config.yaml"), "r"
+                os.path.join(xdg_config_home(), "usb-hid-relay", "config.yaml"), "r"
             ) as f:
                 config = yaml.load(f, Loader=yaml.Loader)
 
